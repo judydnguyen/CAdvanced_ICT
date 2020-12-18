@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "algorithm": "cpp",
+        "random": "cpp",
+        "vector": "cpp",
+        "stack": "cpp",
+        "iostream": "cpp",
+        "map": "cpp",
+        "chrono": "cpp"
+    }
+}
