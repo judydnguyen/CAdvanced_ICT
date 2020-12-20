@@ -12,7 +12,6 @@ vector<pii> g[NMAX]; // directed graph
 vector<int> X[NMAX]; // adjacency list of graph
 int weight[NMAX][NMAX];
 bool flag[NMAX];
-int n, u, v, w;
 int N, M;
 int city[NMAX][3];
 int c_cost, c_dis, c_city;
@@ -27,24 +26,11 @@ void dfs(int v, int k)
         int duplicate;
         for (int i = 0; i < X[v].size(); i++)
         {
-            // for (vi::iterator it = g[c_city].begin(); it != g[c_city].end(); it++) {
-            //     if((it->first == X[v][i] && c_cost < it->second))
-            //     {
-            //         // g[c_city].push_back(make_pair(c_city, c_cost));
-            //         // weight[c_city][X[v][i]] = c_cost;
-            //         // break;
-            //         duplicate = X[v][i];
-            //         break;
-            //     }
-            // }
-            // g[c_city].push_back(make_pair(X[v][i], c_cost));
-
-            // dfs(X[v][i], k - 1);
-
             if (weight[c_city][X[v][i]] == 0)
                 weight[c_city][X[v][i]] = c_cost;
             else if (weight[c_city][X[v][i]] > c_cost)
                 weight[c_city][X[v][i]] = c_cost;
+            // if(c_city == X[v][i]) weight
             dfs(X[v][i], k - 1);
         }
     }
@@ -59,11 +45,11 @@ void dijkstra()
         if(weight[1][i] > 0)
         cost[i] = weight[1][i];
         else 
-        cost[i] = 10000000;
+        cost[i] = 1e9;
         p[i] = 1;
         // cout << cost[i] << endl;
     }
-
+ 
     while(cnt <= N) {
         int min_n = -1, min_w = cost[1]+1;
         for(int i = 2; i<= N; i++) {
@@ -77,7 +63,7 @@ void dijkstra()
         visited[min_n] = true;
         cnt +=1;
         for(int i = 1; i<= N; i++) {
-            int tmp_w = weight[min_n][i] > 0 ? weight[min_n][i] : 10000000;
+            int tmp_w = weight[min_n][i] > 0 ? weight[min_n][i] : 1e9;
             // if(i == N) {
             //     cout << tmp_w << endl;
             // }
@@ -88,8 +74,39 @@ void dijkstra()
             }
         }
     }
-
 }
+
+// int solve() {
+//     for(int i = 1; i<= N ;i++) {
+//         cost[i] = 1e9;
+//     }
+//     cost[1] = 0;
+//     memset(visited, false, sizeof(visited));
+//     for(int i = 1; i<= N ; i++) {
+//         int minId = -1;
+//         int minVal = 1e9;
+//         for(int v = 1; v<= N; v++) {
+//             if(!visited[v]) {
+//                 if (cost[v] < minVal)
+//                 {
+//                     minVal = cost[v];
+//                     minId = v;
+//                 }
+//             }
+//         }
+//         visited[minId] = true;
+//         if(minId == N)
+//         {
+//             cout << cost[minId];
+//             return 0;
+//         }
+//         // update cost
+//         // for(int v = 1; v <= N ; v++) {
+//         //     if(!visited[v] && weight[minId][v] <= )
+//         // }
+
+//     }
+// }
 
 int main()
 {
@@ -117,12 +134,142 @@ int main()
         c_city = i;
         dfs(i, c_dis);
     }
+    for(int i = 1; i<= N; i++) {
+        weight[i][i] = 0;
+    }
     // for(int i = 1; i<= N; i++)
     // {for(int j = 1; j<= N; j++)
-    // // cout << weight[i][j] << " ";
-    // // cout << endl;
+    // cout << weight[i][j] << " ";
+    // cout << endl;
     // }
     dijkstra();
     cout << cost[N] << endl;
     // cout << p[N] << endl;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

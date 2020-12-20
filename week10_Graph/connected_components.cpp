@@ -3,7 +3,7 @@
 
 using namespace std;
 
-const int MAX = 1e5+1;
+const int MAX = 31;
 
 int N, M;
 char COLOR[MAX];
